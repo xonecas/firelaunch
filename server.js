@@ -4,6 +4,7 @@ var sys = require('sys'),
    _ = require('underscore'),
    connect = require('connect'),
    http = require('http'),
+   fs = require('fs'),
    Twitter = require('twitter');
 
 var twitter = new Twitter({
