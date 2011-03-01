@@ -1,0 +1,224 @@
+/*
+  HTML5 ✰ Boilerplate
+
+  style.css contains a reset, font normalization and some base styles.
+
+  credit is left where credit is due.
+  much inspiration was taken from these projects:
+    yui.yahooapis.com/2.8.1/build/base/base.css
+    camendesign.com/design/
+    praegnanz.de/weblog/htmlcssjs-kickstart
+*/
+
+/*
+  html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+  v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
+  html5doctor.com/html-5-reset-stylesheet/
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:100%;
+  font: inherit;
+  vertical-align:baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display:block;
+}
+
+blockquote, q { quotes:none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+
+table { border-collapse:collapse; border-spacing:0; }
+
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+
+input, select { vertical-align:middle; }
+
+/* END RESET CSS */
+
+
+/* font normalization inspired by  from the YUI Library's fonts.css: developer.yahoo.com/yui/ */
+body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
+select, input, textarea, button { font:99% sans-serif; }
+
+/* normalize monospace sizing
+ * en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+/*
+ * minimal base styles
+ */
+
+
+body, select, input, textarea {
+  /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
+  color: #444;
+  /* set your base font here, to apply evenly */
+  /* font-family: Georgia, serif;  */
+}
+
+/* headers (h1,h2,etc) have no default font-size or margin. define those yourself. */
+h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+
+/* always force a scrollbar in non-IE: */
+html { overflow-y: scroll; }
+
+
+/* accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: none; }
+
+a, a:active, a:visited { color: #607890; }
+a:hover { color: #036; }
+
+/* These selection declarations have to be separate.
+   No text-shadow: twitter.com/miketaylr/status/12228805301
+   Also: hot pink. */
+::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
+::selection { background:#FF5E99; color:#fff; text-shadow: none; }
+
+/*  j.mp/webkit-tap-highlight-color */
+a:link { -webkit-tap-highlight-color: #FF5E99; }
+
+/* make buttons play nice in IE:
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button {  width: auto; overflow: visible; }
+
+
+
+
+
+
+
+
+
+
+ /* Primary Styles
+    Author:
+ */
+
+html, body {
+   color: #eee;
+   background-color: #444;
+}
+em { font-weight: bold; }
+
+h1 { 
+   font-size: 2em; 
+   text-shadow: 1px 1px 3px #111; 
+}
+
+h2 {
+   font-size: 1.5em;
+   text-shadow: 1px 1px 3px #111; 
+}
+
+#container {
+   width: 760px;
+   margin: 40px auto;
+}
+
+#header {
+   text-align: center;
+}
+
+#stats {
+   margin: 10px 0;
+}
+
+#list {
+   list-style: none;
+   margin: 20px 0;
+}
+
+
+.tweet {
+   -moz-border-radius: 6px; 
+   -webkit-border-radius: 6px; 
+   border-radius: 6px; 
+
+   -moz-box-shadow: 0px 0px 4px #111; 
+   -webkit-box-shadow: 0px 0px 4px #111; 
+   box-shadow: 0px 0px 4px #111; 
+
+   margin: 5px 0;
+   padding: 5px;
+   overflow: hidden;
+
+   background-color: #333;
+   display: none;
+}
+.tweet img {
+   float: right;
+   margin-left: 10px;
+}
+.tweet .meta { margin-top: 1em; }
+.tweet .time { color: #aaa; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Non-semantic helper classes: please define your styles before this section.
+ */
+
+/* Hide for both screenreaders and browsers
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display: none; visibility: hidden; }
+
+/* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; visibility: hidden; }
+.clearfix:after { clear: both; }
+/* fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix { zoom: 1; }
+
+/*
+ * print styles
+ * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/
+ */
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important;
+  -ms-filter: none !important; } /* black prints faster: sanbeiji.com/archives/953 */
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+
