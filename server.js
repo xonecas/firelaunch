@@ -1,9 +1,10 @@
 
-var sys = require('sys'),
+var util = require('util'),
    io = require('socket.io'),
    _ = require('underscore'),
    connect = require('connect'),
    http = require('http'),
+   url = require('url'),
    fs = require('fs'),
    Twitter = require('twitter');
 
@@ -14,11 +15,22 @@ var twitter = new Twitter({
    access_token_secret: 'qWJkB3kHyP9vdRW7zQcXShsjGazbWxK4GuwFsFrlQIE'
 });
 
+var cache = 1000 * 60 * 60 * 24 * 5;
 var server = connect.createServer(
-   connect.conditionalGet(),
-   connect.cache(),
-   connect.gzip(),
-   connect.staticProvider(__dirname)
+   connect.logger(),
+   connect.router(function (app) {
+
+      app.get('/paul', function (req, res, next) {
+         var reqUrl = url.parse(req.url, true);
+//         res.end(util.inspect(reqUrl));
+         if (reqUrl.query.s === 'log') {
+            req.url = '/log.txt';
+            next();
+         }
+      });
+
+   }),
+   connect.static(__dirname, {maxAge: cache})
 );
 
 server.listen(321);
@@ -47,6 +59,11 @@ socket.on('connection', function (client) {
    });
 });
 
+var file = fs.createWriteStream(
+   "./log.txt",
+   { flags: 'w', enconding: 'utf8' }
+);
+
 twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4'}, 
    function (hose) {
 
@@ -60,13 +77,13 @@ twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4'},
          timeHours = time / (1000 * 60 * 60),
          timeDays = time / (1000 * 60 * 60 * 24),
          count = stats.count,
-         rateMin = timeMinutes / count,
-         rateHour = timeHours / count,
-         rateDays = timeDays / count;
+         rateMin = count / timeMinutes,
+         rateHour = count / timeHours,
+         rateDays = count / timeDays;
 
-      stats.perMin = rateMin;
-      stats.perHour = rateHour;
-      stats.perDay = rateDays; 
+      stats.perMin = rateMin.toFixed(3);
+      stats.perHour = rateHour.toFixed(3);
+      stats.perDay = rateDays.toFixed(3); 
 
 
       twiit.stats = stats;
@@ -75,6 +92,11 @@ twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4'},
       cache = cache.slice(0, 25); // save the cache
 
       console.log('===== Twits containing firefox: '+ stats.count);
+
+      file.write("\n\n"+
+         twiit.text +"\n"+ twiit.user.screen_name +
+         "\n"+ twiit.created_at +"\n"
+      );
    });
 });
 
