@@ -64,7 +64,7 @@ var file = fs.createWriteStream(
    { flags: 'w', enconding: 'utf8' }
 );
 
-twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4'}, 
+twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4, fx4'}, 
    function (hose) {
 
    hose.on('data', function (twiit) {
@@ -88,7 +88,7 @@ twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4'},
 
       twiit.stats = stats;
       socket.broadcast(JSON.stringify(twiit));
-      cache.push(twiit);
+      cache.unshift(twiit);
       cache = cache.slice(0, 25); // save the cache
 
       console.log('===== Twits containing firefox: '+ stats.count);

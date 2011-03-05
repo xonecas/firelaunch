@@ -90,17 +90,21 @@ html { overflow-y: scroll; }
 /* accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+a, a:active, a:visited { color: #bada55; }
+a:hover { 
+   /* :-) */
+   text-shadow: 0 0 15px #bada55; 
+   cursor: pointer;
+ }
 
 /* These selection declarations have to be separate.
    No text-shadow: twitter.com/miketaylr/status/12228805301
-   Also: hot pink. */
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; }
+   Also: badass. */
+::-moz-selection{ background: #bada55; color:#fff; text-shadow: none; }
+::selection { background:#bada55; color:#fff; text-shadow: none; }
 
 /*  j.mp/webkit-tap-highlight-color */
-a:link { -webkit-tap-highlight-color: #FF5E99; }
+a:link { -webkit-tap-highlight-color: #bada55; }
 
 /* make buttons play nice in IE:
    www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
@@ -121,7 +125,15 @@ button {  width: auto; overflow: visible; }
 
 html, body {
    color: #eee;
-   background-color: #444;
+   background-color: #333;
+   height: 100%;
+   background: -webkit-gradient(
+     radial, 50% 25%, 0, 50% 25%, 700, from(#777), to(#333)
+   ) #f90 fixed;
+
+   background: -moz-radial-gradient(
+     50% 25%, circle, #777 0px, #333 700px
+   ) fixed;
 }
 em { font-weight: bold; }
 
@@ -137,7 +149,8 @@ h2 {
 
 #container {
    width: 760px;
-   margin: 40px auto;
+   margin: 0 auto;
+   padding: 40px 0;
 }
 
 #header {
@@ -155,6 +168,8 @@ h2 {
 
 
 .tweet {
+   display: block;
+
    -moz-border-radius: 6px; 
    -webkit-border-radius: 6px; 
    border-radius: 6px; 
@@ -177,11 +192,30 @@ h2 {
 .tweet .meta { margin-top: 1em; }
 .tweet .time { color: #aaa; }
 
+.special {
+   text-align: center;
+}
 
+.tweet:hover {
+   font-size: 1.5em;
+   color: #444;
+   background-color: #bada55;
+   -moz-box-shadow: 0px 0px 4px #bada55; 
+   -webkit-box-shadow: 0px 0px 4px #bada55; 
+   box-shadow: 0px 0px 4px #bada55; 
+}
+.tweet:hover .time {
+   color: #666;
+}
 
-
-
-
+.tweet:hover a { 
+   /* :-) */
+   color: #000;
+   cursor: pointer;
+ }
+.tweet:hover a:hover {
+   text-shadow: 0 0 15px #222; 
+}
 
 
 

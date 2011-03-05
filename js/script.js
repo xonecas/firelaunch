@@ -7,6 +7,7 @@
 
 function addTweet (tweet) {
    var stats = tweet.stats, 
+      name = tweet.user.screen_name,
       time = new Date(tweet.created_at),
       timeStr = 'on '+ time.toDateString() +
          'at '+ time.toTimeString();
@@ -22,7 +23,8 @@ function addTweet (tweet) {
 '   <img src="'+ tweet.user.profile_image_url +'" />'+
 '   <div class="text">'+ tweet.text +'</div>'+
 '   <div class="meta">'+
-'      <span class="name">By '+ tweet.user.screen_name +'</span>'+
+'      <a href="//twitter.com/'+name+
+         '" target="_new" class="name">By '+name +'</a>'+
 '      <span class="time">'+ timeStr +'</span>'+
 '   </div>'+
 '</li>'
