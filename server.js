@@ -64,7 +64,7 @@ var file = fs.createWriteStream(
    { flags: 'w', enconding: 'utf8' }
 );
 
-twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4, fx4'}, 
+twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4, fx4, ffx4'}, 
    function (hose) {
 
    hose.on('data', function (twiit) {
