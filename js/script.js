@@ -12,7 +12,6 @@ function addTweet (tweet) {
       timeStr = 'on '+ time.toDateString() +
          'at '+ time.toTimeString();
 
-
    $('#count').html(tweet.stats.count);
    $('#min_rate').html(stats.perMin);
    $('#hour_rate').html(stats.perHour);
@@ -20,7 +19,7 @@ function addTweet (tweet) {
 
    $('#list li:first-child').before(
 '<li class="tweet clearfix">'+
-'   <img src="'+ tweet.user.profile_image_url +'" />'+
+'   <img width="48" height="48" src="'+ tweet.user.profile_image_url +'" />'+
 '   <div class="text">'+ tweet.text +'</div>'+
 '   <div class="meta">'+
 '      <a href="//twitter.com/'+name+

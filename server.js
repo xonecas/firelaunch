@@ -90,6 +90,7 @@ twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4, fx4, ffx4'}
       socket.broadcast(JSON.stringify(twiit));
       cache.unshift(twiit);
       cache = cache.slice(0, 25); // save the cache
+      cache.reverse(); // latest at the top
 
       console.log('===== Twits containing firefox: '+ stats.count);
 
