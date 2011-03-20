@@ -6,6 +6,7 @@ var util = require('util'),
    http = require('http'),
    url = require('url'),
    fs = require('fs'),
+   inspect = require('util').inspect,
    Twitter = require('twitter');
 
 var twitter = new Twitter({
@@ -94,10 +95,7 @@ twitter.stream('statuses/filter', {track: 'firefox 4, ff4, firefox4, fx4, ffx4'}
 
       console.log('===== Twits containing firefox: '+ stats.count);
 
-      file.write("\n\n"+
-         twiit.text +"\n"+ twiit.user.screen_name +
-         "\n"+ twiit.created_at +"\n"
-      );
+      file.write("\n\n"+ inspect(twiit) +"\n\n");
    });
 });
 
